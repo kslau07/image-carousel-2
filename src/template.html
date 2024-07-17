@@ -10,51 +10,14 @@
   <body>
     <!--
         Summary:
-        1. Create our wrapper div -> .carousel
-        2. Create 2 buttons -> .carousel__button
+        1. Create our wrapper div -> div.carousel
+        2. Create 2 buttons, they go before and after div.carousel -> .carousel__button and --left --right
         3. Create an inner wrapper -> carousel__track-container  // Remember that one dash indicates a name, two dashes indicate a block--element
         4. Create the actual list of images -> ul.carousel__track
-        5. Create individual slides -> li.carousel__slide > img
+        5. Create individual slides -> li.carousel__slide and then > img.carousel__image
+        6. Create our 'nav' dots -> div.carousel__nav
+        7. Create dots (buttons) -> .carousel__indicator
+        8. Later ... first .carousel__indicator gets 'current-slide'
       -->
-
-    <div class="carousel">
-      <button class="carousel__button carousel__button--left">
-        <img alt="" src="https://www.svgrepo.com/show/500913/left.svg" />
-      </button>
-      <div class="carousel__track-container">
-        <ul class="carousel__track">
-          <li class="carousel__slide current-slide">
-            <img
-              alt=""
-              class="carousel__image"
-              src="https://images.pexels.com/photos/24372295/pexels-photo-24372295/free-photo-of-a-person-walking-down-a-concrete-walkway.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            />
-          </li>
-          <li class="carousel__slide">
-            <img
-              alt=""
-              class="carousel__image"
-              src="https://images.pexels.com/photos/18939401/pexels-photo-18939401/free-photo-of-cars-and-motorbikes-on-street-at-sunset-in-black-and-white.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            />
-          </li>
-          <li class="carousel__slide">
-            <img
-              alt=""
-              class="carousel__image"
-              src="https://images.pexels.com/photos/26590006/pexels-photo-26590006/free-photo-of-a-zebra-standing-in-the-water.jpeg"
-            />
-          </li>
-        </ul>
-      </div>
-      <button class="carousel__button carousel__button--right">
-        <img alt="" src="https://www.svgrepo.com/show/500991/right.svg" />
-      </button>
-
-      <div class="carousel__nav">
-        <button class="carousel__indicator current-slide"></button>
-        <button class="carousel__indicator"></button>
-        <button class="carousel__indicator"></button>
-      </div>
-    </div>
   </body>
 </html>
