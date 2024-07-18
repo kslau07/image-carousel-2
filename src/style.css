@@ -5,42 +5,75 @@
   position: relative;
   width: 80%;
   margin: 0 auto;
-  outline: 3px dotted red;
+  outline: 3px dashed red;
 }
 
 .carousel__track-container {
   position: relative;
+  height: 100%;
 }
 
 .carousel__track {
   position: relative;
-  /* height: 100%; */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 100%;
 }
 
 .carousel__slide {
   position: absolute;
-  /* height: 100%; */
+  /* top: 0; */
+  /* bottom: 0; */
+  height: 100%;
+  width: 100%;
 }
 
 .carousel__image {
-  /* height: 100%; */
   object-fit: cover;
-}
-
-.carousel__button--left {
-  left: 0;
-}
-
-.carousel__button--right {
-  right: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .carousel__button {
-  position: relative;
-  height: 25px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 150px;
+  width: 25px;
+  cursor: pointer;
+}
+
+.carousel__button--left {
+  left: -50px;
+}
+
+.carousel__button--right {
+  right: -50px;
 }
 
 .carousel__button > img {
   height: 100%;
   width: 100%;
+}
+
+.carousel__nav {
+  outline: 3px dashed green;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.carousel__indicator {
+  --side: 12px;
+  height: var(--side);
+  width: var(--side);
+  background: hsl(200, 100%, 75%);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.carousel__indicator.current-slide {
+  filter: brightness(45%);
 }
