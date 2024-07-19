@@ -21,12 +21,9 @@
       -->
 
     <div class="carousel">
-      <button class="carousel__button carousel__button--left">
-        <img alt="" src="https://www.svgrepo.com/show/500913/left.svg" />
-      </button>
       <div class="carousel__track-container">
         <ul class="carousel__track">
-          <li class="carousel__slide">
+          <li class="carousel__slide" data-current-slide>
             <img
               class="carousel__image"
               alt=""
@@ -49,11 +46,14 @@
           </li>
         </ul>
       </div>
+      <button class="carousel__button carousel__button--left">
+        <img alt="" src="https://www.svgrepo.com/show/500913/left.svg" />
+      </button>
       <button class="carousel__button carousel__button--right">
         <img alt="" src="https://www.svgrepo.com/show/500991/right.svg" />
       </button>
       <div class="carousel__nav">
-        <div class="carousel__indicator current-slide"></div>
+        <div class="carousel__indicator"></div>
         <div class="carousel__indicator"></div>
         <div class="carousel__indicator"></div>
       </div>
