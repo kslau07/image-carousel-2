@@ -70,11 +70,7 @@
   --side: 12px;
   height: var(--side);
   width: var(--side);
-  background: hsl(200, 100%, 75%);
+  background: #cccccc;
   border-radius: 50%;
   cursor: pointer;
-}
-
-.carousel__indicator.current-slide {
-  filter: brightness(45%);
 }
