@@ -5,12 +5,12 @@
   position: relative;
   width: 80%;
   margin: 0 auto;
-  outline: 3px dashed red;
 }
 
 .carousel__track-container {
   position: relative;
   height: 100%;
+  overflow: hidden;
 }
 
 .carousel__track {
@@ -19,6 +19,7 @@
   padding: 0;
   list-style: none;
   height: 100%;
+  /* overflow-x: hidden; */
 }
 
 .carousel__slide {
@@ -59,7 +60,6 @@
 }
 
 .carousel__nav {
-  outline: 3px dashed green;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
@@ -73,4 +73,5 @@
   background: #cccccc;
   border-radius: 50%;
   cursor: pointer;
+  border: 0;
 }

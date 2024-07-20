@@ -11,51 +11,57 @@ const setSlideWidth = (slide, index) => {
 };
 slides.forEach(setSlideWidth);
 
-const nav = document.querySelector('.carousel__nav');
-const dots = [...nav.children];
-
-const updateDotColors = function (oldSlideIndex, newSlideIndex) {
-  dots[oldSlideIndex].style.background = '#cccccc';
-  dots[newSlideIndex].style.background = '#222222';
+const updateDotColors = function (newSlide) {
+  const currentSlide = track.querySelector('[data-current-slide]');
+  const currentIndex = slides.indexOf(currentSlide);
+  dots[currentIndex].style.background = '#cccccc';
+  const targetIndex = slides.indexOf(newSlide);
+  dots[targetIndex].style.background = '#222222';
 };
 
-const setCurrentSlide = (newSlideIndex) => {
-  track.style.left = `-${slideWidth * newSlideIndex}px`;
-  const oldSlide = track.querySelector('[data-current-slide]');
-  const oldSlideIndex = slides.indexOf(oldSlide);
-  updateDotColors(oldSlideIndex, newSlideIndex);
-  slides[newSlideIndex].dataset.currentSlide = 'true';
-  delete oldSlide.dataset.currentSlide;
+const moveToSlide = (targetSlide) => {
+  track.style.transform = `translateX(-${targetSlide.style.left})`;
+  const currentSlide = track.querySelector('[data-current-slide]');
+  updateDotColors(targetSlide);
+  targetSlide.dataset.currentSlide = 'true';
+  delete currentSlide.dataset.currentSlide;
 };
 
 const buttonLeft = document.querySelector('.carousel__button--left');
 const buttonRight = document.querySelector('.carousel__button--right');
 
-const viewNextSlide = function () {
-  const currentSlide = track.querySelector('[data-current-slide]');
-  const currentIndex = slides.indexOf(currentSlide);
-  const prevIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
-  setCurrentSlide(prevIndex);
-};
-
-buttonLeft.addEventListener('click', viewNextSlide);
-
 const viewPrevSlide = function () {
   const currentSlide = track.querySelector('[data-current-slide]');
   const currentIndex = slides.indexOf(currentSlide);
+  const prevIndex = currentIndex === 0 ? slides.length - 1 : currentIndex - 1;
+  const prevSlide = slides[prevIndex];
+  moveToSlide(prevSlide);
+};
+
+buttonLeft.addEventListener('click', viewPrevSlide);
+
+const viewNextSlide = function () {
+  const currentSlide = track.querySelector('[data-current-slide]');
+  const currentIndex = slides.indexOf(currentSlide);
   const nextIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
-  setCurrentSlide(nextIndex);
+  const nextSlide = slides[nextIndex];
+  moveToSlide(nextSlide);
 };
 
-buttonRight.addEventListener('click', viewPrevSlide);
+buttonRight.addEventListener('click', viewNextSlide);
 
-const setDot = function (dot) {
-  dot.addEventListener('click', () => {
-    const idx = dots.indexOf(dot);
-    setCurrentSlide(idx);
-  });
-};
+const nav = document.querySelector('.carousel__nav');
+const dots = [...nav.children];
 
-dots.forEach(setDot);
+nav.addEventListener('click', (e) => {
+  const targetDot = e.target.closest('button');
 
-updateDotColors(1, 0);
+  if (!targetDot) return;
+
+  const targetIndex = dots.findIndex((dot) => dot === targetDot);
+  const targetSlide = slides[targetIndex];
+  moveToSlide(targetSlide);
+});
+
+const currentSlide = document.querySelector('[data-current-slide]');
+updateDotColors(currentSlide);
